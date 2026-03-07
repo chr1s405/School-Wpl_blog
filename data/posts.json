@@ -1,0 +1,80 @@
+[
+  {
+    "id": 1,
+    "text": "Day 1 – 02/02: First day on the internship! After arriving, I met my project colleague and we attended a short, informative presentation about the company, our mentors, and the project ahead. I was happy to see our mentors were approachable and enjoyed their work. Later, we received all the tools and accounts we’d need, and got started with Umbraco using Paul Seal's video tutorials. A lot of new knowledge, but a smooth start. Excited to continue learning!",
+    "tags": [{"name": "onboarding"},{"name":" Umbraco"},{"name":" first day"}],
+    "createdAt": "2026-02-02"
+  },
+  {
+    "id": 2,
+    "text": "Day 2 – 05/02: Spent the day learning and practicing Umbraco. It’s more complex than I initially thought, especially extensions. I plan to research more before asking my mentors for help. Progress is slow but steady.",
+    "tags": [{"name": "Umbraco"},{"name":" learning"},{"name":" challenges"}],
+    "createdAt": "2026-02-05"
+  },
+  {
+    "id": 3,
+    "text": "Day 3 – 06/02: Continued diving into Umbraco. Extensions were tricky and frustrating, but solving problems really helped my understanding. Lunch was extra fun with the first-Friday-of-the-month burgers at the office! Later, we discussed technologies like Vite8 (automatic CSS updates), Playwright (screenshot testing), WCAG guidelines, and server-side rendering. The discussions were insightful, even when a bit went over my head.",
+    "tags": [{"name": "Umbraco"},{"name":" learning"},{"name":" tech insights"},{"name":" company culture"}],
+    "createdAt": "2026-02-06"
+  },
+  {
+    "id": 4,
+    "text": "Day 4 – 09/02: Officially started the webshop project today. We discussed requirements and planned our approach. This week is all about analysis: wireframes, data tables, user stories, and preparation. My school mentor visited to check on progress; everything went smoothly.",
+    "tags": [{"name": "project start"},{"name":" webshop"},{"name":" analysis"}],
+    "createdAt": "2026-02-09"
+  },
+  {
+    "id": 5,
+    "text": "Day 5 – 10/02: Continued project analysis. Had to leave early for a school meeting, but it wasn’t a problem for the company.",
+    "tags": [{"name": "analysis"},{"name":" project"}],
+    "createdAt": "2026-02-10"
+  },
+  {
+    "id": 6,
+    "text": "Day 6 – 13/02: Analysis continues. My partner added lots of details while I focused on improving and refining. We solved a concurrency issue in the database by recording purchases as new rows and calculating stock based on all entries",
+    "tags": [{"name": "analysis"},{"name":" problem solving"},{"name":" teamwork"}],
+    "createdAt": "2026-02-13"
+  },
+  {
+    "id": 7,
+    "text": "Days 7-9 – 16/02 to 20/02: Mostly focused on analytics and completing the webshop layouts. Analysis is now complete, and we started prioritizing tasks for the next phase.",
+    "tags": [{"name": "analysis"},{"name":" project planning"},{"name":" layouts"}],
+    "createdAt": "2026-02-20"
+  },
+  {
+    "id": 8,
+    "text": "Day 10 – 23/02: First sprint meeting! We brainstormed the order of tasks, focusing on project setup, database, and Azure configuration. We even played a fun estimation game guessing how long each ticket would take to complete.",
+    "tags": [{"name": "sprint planning"},{"name":" teamwork"},{"name":" project setup"}],
+    "createdAt": "2026-02-23"
+  },
+  {
+    "id": 9,
+    "text": "Day 11 – 26/02: Worked on the webshop's mail service but got stuck linking it to the domain due to permissions. While waiting for mentor help, I switched to working on the category management dashboard in the backoffice.",
+    "tags": [{"name": "mail service"},{"name":" problem solving"},{"name":" backoffice"}],
+    "createdAt": "2026-02-26"
+  },
+  {
+    "id": 10,
+    "text": "Day 12 – 27/02: Creating an API for the category overview became more complex than expected. Some issues with database tables in VS Studio were resolved with guidance from my mentor, but API setup still needed careful attention.",
+    "tags": [{"name": "API"},{"name":" database"},{"name":" problem solving"}],
+    "createdAt": "2026-02-27"
+  },
+  {
+    "id": 11,
+    "text": "Day 13 – 02/03: Finally got the API working and continued with the category overview. Had intervision with school peers to share experiences. Everyone is still in learning a lot.",
+    "tags": [{"name": "API"},{"name":" category overview"},{"name":" intervision"},{"name":" learning"}],
+    "createdAt": "2026-03-02"
+  },
+  {
+    "id": 12,
+    "text": "Day 14 – 05/03: Focused on reviewing pull requests and implementing feedback. It was great to improve the code quality after thorough reviews.",
+    "tags": [{"name": "code review"},{"name":" improvement"}],
+    "createdAt": "2026-03-05"
+  },
+  {
+    "id": 13,
+    "text": "Day 15 – 06/03: Big win today! Managed to implement member registration using Umbraco's members system. Struggled with connecting custom user data, but eventually solved it. Also participated in the monthly burger cooking at the office—delicious and fun!",
+    "tags": [{"name": "Umbraco"},{"name":" problem solving"},{"name":" office culture"}],
+    "createdAt": "2026-03-06"
+  }
+]
