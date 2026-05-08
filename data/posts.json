@@ -1,80 +1,122 @@
 [
   {
     "id": 1,
-    "text": "Day 1 – 02/02: First day on the internship! After arriving, I met my project colleague and we attended a short, informative presentation about the company, our mentors, and the project ahead. I was happy to see our mentors were approachable and enjoyed their work. Later, we received all the tools and accounts we’d need, and got started with Umbraco using Paul Seal's video tutorials. A lot of new knowledge, but a smooth start. Excited to continue learning!",
-    "tags": [{"name": "onboarding"},{"name":" Umbraco"},{"name":" first day"}],
+    "title": "First day at Numble",
+    "excerpt": "Getting introduced to the company, meeting mentors, and starting with Umbraco.",
+    "content": "Today was the first day of my internship at Numble. After arriving at the office, we received an introduction about the company, our mentors, and the webshop project we’ll be working on during the internship. The atmosphere immediately felt welcoming and professional, while still relaxed and approachable.\n\nAfter setting up our accounts and development tools, we started learning Umbraco, which is completely new to me. We followed tutorials by Paul Seal to get familiar with the CMS and its structure. Even though there was a lot of new information, the onboarding process went smoothly and I’m excited to continue learning and eventually start building the webshop.",
+    "tags": ["internship", "umbraco", "onboarding"],
     "createdAt": "2026-02-02"
   },
   {
     "id": 2,
-    "text": "Day 2 – 05/02: Spent the day learning and practicing Umbraco. It’s more complex than I initially thought, especially extensions. I plan to research more before asking my mentors for help. Progress is slow but steady.",
-    "tags": [{"name": "Umbraco"},{"name":" learning"},{"name":" challenges"}],
+    "title": "Learning Umbraco",
+    "excerpt": "Getting deeper into Umbraco and struggling with extensions.",
+    "content": "Most of the day was focused on learning and practicing Umbraco. At first I underestimated how complex the platform actually is. There are many moving parts and concepts that take time to understand.\n\nI spent a lot of time working with extensions and repeatedly ran into small issues that blocked progress. Although it was frustrating at times, I’m slowly starting to understand how everything connects together. I’m trying to solve problems independently before immediately asking for help, since researching solutions myself helps me learn faster.",
+    "tags": ["umbraco", "learning"],
     "createdAt": "2026-02-05"
   },
   {
     "id": 3,
-    "text": "Day 3 – 06/02: Continued diving into Umbraco. Extensions were tricky and frustrating, but solving problems really helped my understanding. Lunch was extra fun with the first-Friday-of-the-month burgers at the office! Later, we discussed technologies like Vite8 (automatic CSS updates), Playwright (screenshot testing), WCAG guidelines, and server-side rendering. The discussions were insightful, even when a bit went over my head.",
-    "tags": [{"name": "Umbraco"},{"name":" learning"},{"name":" tech insights"},{"name":" company culture"}],
+    "title": "Tech talks and burgers",
+    "excerpt": "A day of learning, debugging, and interesting discussions about web technologies.",
+    "content": "Today was another day focused on learning Umbraco and experimenting with extensions. I spent quite a bit of time debugging small issues that repeatedly broke my implementation, but every mistake helped me understand the system better.\n\nAt lunch, the company organized their monthly burger event where everyone gathered together to cook and eat. It created a very relaxed atmosphere and made the office feel much more social.\n\nLater in the day, the team discussed several modern web development topics including Vite, automated testing with Playwright, WCAG accessibility guidelines, and server-side rendering. Even though some concepts were still unfamiliar to me, the discussions were very insightful and showed me how broad modern web development really is.",
+    "tags": ["umbraco", "webdevelopment", "learning"],
     "createdAt": "2026-02-06"
   },
   {
     "id": 4,
-    "text": "Day 4 – 09/02: Officially started the webshop project today. We discussed requirements and planned our approach. This week is all about analysis: wireframes, data tables, user stories, and preparation. My school mentor visited to check on progress; everything went smoothly.",
-    "tags": [{"name": "project start"},{"name":" webshop"},{"name":" analysis"}],
+    "title": "Starting the webshop project",
+    "excerpt": "The analysis phase officially begins.",
+    "content": "Today we officially started working on the webshop project. During a meeting, we discussed the project requirements and the features that needed to be implemented, such as product pages, filtering, payments, and account management.\n\nThis first phase focuses heavily on analysis. We started creating wireframes, user stories, and preparing the database structure. My school mentor also visited the company to discuss the progress of the internship. Overall, the project is starting to feel much more real now that we’ve moved beyond tutorials and into actual planning.",
+    "tags": ["analysis", "webshop", "planning"],
     "createdAt": "2026-02-09"
   },
   {
     "id": 5,
-    "text": "Day 5 – 10/02: Continued project analysis. Had to leave early for a school meeting, but it wasn’t a problem for the company.",
-    "tags": [{"name": "analysis"},{"name":" project"}],
-    "createdAt": "2026-02-10"
-  },
-  {
-    "id": 6,
-    "text": "Day 6 – 13/02: Analysis continues. My partner added lots of details while I focused on improving and refining. We solved a concurrency issue in the database by recording purchases as new rows and calculating stock based on all entries",
-    "tags": [{"name": "analysis"},{"name":" problem solving"},{"name":" teamwork"}],
+    "title": "Solving concurrency problems",
+    "excerpt": "Designing a safer approach for stock management.",
+    "content": "Today we continued working on the webshop analysis. One interesting challenge was figuring out how to handle concurrency issues, such as two users purchasing the same product at the same time.\n\nInstead of directly modifying stock values, we decided to store purchases as separate database records and calculate stock dynamically from those entries. It was interesting to think about these kinds of real-world problems and how important database design can be for avoiding conflicts.",
+    "tags": ["database", "analysis", "backend"],
     "createdAt": "2026-02-13"
   },
   {
-    "id": 7,
-    "text": "Days 7-9 – 16/02 to 20/02: Mostly focused on analytics and completing the webshop layouts. Analysis is now complete, and we started prioritizing tasks for the next phase.",
-    "tags": [{"name": "analysis"},{"name":" project planning"},{"name":" layouts"}],
-    "createdAt": "2026-02-20"
-  },
-  {
-    "id": 8,
-    "text": "Day 10 – 23/02: First sprint meeting! We brainstormed the order of tasks, focusing on project setup, database, and Azure configuration. We even played a fun estimation game guessing how long each ticket would take to complete.",
-    "tags": [{"name": "sprint planning"},{"name":" teamwork"},{"name":" project setup"}],
+    "id": 6,
+    "title": "Sprint planning and ticket estimation",
+    "excerpt": "Preparing the first sprint and organizing project tasks.",
+    "content": "Today we held our first sprint meeting. Together we discussed the order in which features and technical setup tasks should be completed.\n\nWe split the work into tickets and estimated how long each task would take. It was interesting to see how a professional development team plans projects and prioritizes work. We also discussed infrastructure-related tasks such as Azure setup, database configuration, and project initialization.",
+    "tags": ["scrum", "planning", "azure"],
     "createdAt": "2026-02-23"
   },
   {
-    "id": 9,
-    "text": "Day 11 – 26/02: Worked on the webshop's mail service but got stuck linking it to the domain due to permissions. While waiting for mentor help, I switched to working on the category management dashboard in the backoffice.",
-    "tags": [{"name": "mail service"},{"name":" problem solving"},{"name":" backoffice"}],
+    "id": 7,
+    "title": "Azure email service challenges",
+    "excerpt": "Struggling with domain verification and permissions.",
+    "content": "Today I worked on implementing the webshop’s mail service using Azure. Setting everything up turned out to be more complicated than expected because the service required DNS verification on the company domain.\n\nSince I didn’t have permission to modify the necessary DNS records, the setup became a back-and-forth process with my mentors. While waiting for changes to propagate, I temporarily switched to working on the category management dashboard in the backoffice.",
+    "tags": ["azure", "email", "backend"],
     "createdAt": "2026-02-26"
   },
   {
-    "id": 10,
-    "text": "Day 12 – 27/02: Creating an API for the category overview became more complex than expected. Some issues with database tables in VS Studio were resolved with guidance from my mentor, but API setup still needed careful attention.",
-    "tags": [{"name": "API"},{"name":" database"},{"name":" problem solving"}],
-    "createdAt": "2026-02-27"
-  },
-  {
-    "id": 11,
-    "text": "Day 13 – 02/03: Finally got the API working and continued with the category overview. Had intervision with school peers to share experiences. Everyone is still in learning a lot.",
-    "tags": [{"name": "API"},{"name":" category overview"},{"name":" intervision"},{"name":" learning"}],
+    "id": 8,
+    "title": "Building APIs for the backoffice",
+    "excerpt": "Creating APIs and database tables for category management.",
+    "content": "Today I worked on creating APIs for the category overview in the webshop backoffice. Initially the implementation seemed straightforward, but I discovered that Umbraco backoffice integrations required a different API approach than expected.\n\nI also encountered issues while setting up database tables inside Visual Studio, but with help from the documentation and guidance from my mentor I eventually resolved the problems. After several attempts and reviewing the documentation carefully, I finally got the API working correctly.",
+    "tags": ["api", "umbraco", "backend"],
     "createdAt": "2026-03-02"
   },
   {
-    "id": 12,
-    "text": "Day 14 – 05/03: Focused on reviewing pull requests and implementing feedback. It was great to improve the code quality after thorough reviews.",
-    "tags": [{"name": "code review"},{"name":" improvement"}],
+    "id": 9,
+    "title": "Improving code quality through feedback",
+    "excerpt": "Learning from pull request reviews and improving development practices.",
+    "content": "Today was mostly focused on reviewing pull requests and processing feedback from the team. The reviews were detailed and showed several areas where our code quality could improve.\n\nAlthough it was sometimes confronting to see mistakes pointed out, the feedback helped me understand better coding practices and improve the overall structure of my work. It showed me how valuable code reviews are in a professional environment.",
+    "tags": ["code-review", "learning", "development"],
     "createdAt": "2026-03-05"
   },
   {
-    "id": 13,
-    "text": "Day 15 – 06/03: Big win today! Managed to implement member registration using Umbraco's members system. Struggled with connecting custom user data, but eventually solved it. Also participated in the monthly burger cooking at the office—delicious and fun!",
-    "tags": [{"name": "Umbraco"},{"name":" problem solving"},{"name":" office culture"}],
+    "id": 10,
+    "title": "Finally getting member registration working",
+    "excerpt": "A long debugging session finally pays off.",
+    "content": "Today I finally managed to implement user registration using Umbraco Members. At first I tried connecting a separate customer entity to Umbraco Members, but eventually we realized it made more sense to extend the existing member model instead.\n\nI also spent hours debugging an issue where my form data wouldn’t reach the controller. After going through documentation and reviewing my code repeatedly, I eventually found the problem. Solving it felt both satisfying and slightly frustrating because the issue turned out to be something relatively small.\n\nLater in the day, the company organized their monthly burger lunch again, and this time I helped prepare the food together with another intern.",
+    "tags": ["umbraco", "authentication", "debugging"],
     "createdAt": "2026-03-06"
+  },
+  {
+    "id": 11,
+    "title": "Completing account management",
+    "excerpt": "Login, registration, and account functionality are now finished.",
+    "content": "Today progress went smoothly. I finished the account management functionality, including registration and login systems.\n\nIt was satisfying to see multiple features finally come together after spending so much time debugging and researching earlier in the project. My next focus will be category properties and improving the webshop structure further.",
+    "tags": ["authentication", "frontend", "backend"],
+    "createdAt": "2026-03-12"
+  },
+  {
+    "id": 12,
+    "title": "Midterm evaluation",
+    "excerpt": "Reviewing my internship progress together with school and mentors.",
+    "content": "Today was the midterm evaluation of the internship. Together with my mentors and a lecturer from school, we reviewed my progress and discussed different aspects of my performance.\n\nOverall I’m happy with the feedback I received. There are still areas where I can improve, particularly soft skills and communication, but it was motivating to hear that my technical progress is going well.",
+    "tags": ["internship", "evaluation", "growth"],
+    "createdAt": "2026-03-16"
+  },
+  {
+    "id": 13,
+    "title": "Fixing Razor IntelliSense",
+    "excerpt": "A productivity issue finally solved.",
+    "content": "Today the company held a quarterly meeting where topics such as efficiency, clients, security vulnerabilities, and internal improvements were discussed.\n\nOn the technical side, I finally fixed the IntelliSense issues I had been experiencing in Razor. This problem had been slowing me down significantly because errors only became visible after running the project. Having proper IntelliSense support again immediately improved my workflow and productivity.",
+    "tags": ["razor", "tooling", "development"],
+    "createdAt": "2026-04-10"
+  },
+  {
+    "id": 14,
+    "title": "Project demo and accessibility discussions",
+    "excerpt": "Presenting our progress and discussing WCAG and security.",
+    "content": "Today we attended discussions about WCAG accessibility guidelines and security vulnerabilities related to outdated packages and dependencies.\n\nLater we presented a demo of the webshop to part of the team. While many features were working individually, not everything was fully integrated yet. Even so, the feedback was positive and it was useful to see the project slowly evolving into a complete application.",
+    "tags": ["wcag", "security", "demo"],
+    "createdAt": "2026-04-24"
+  },
+  {
+    "id": 15,
+    "title": "Finishing product variant selection",
+    "excerpt": "Finally completing one of the more difficult webshop features.",
+    "content": "Recently I spent a lot of time working on the product detail page and especially the product variant selection logic. Matching the correct variants and options turned out to be more difficult than expected and led to several messy implementations before I found a cleaner solution.\n\nToday I finally completed the variant selection system. Along the way we also had to redesign part of the shopping cart structure so it could properly support product variants. It was a challenging feature, but seeing it finally work correctly was very rewarding.",
+    "tags": ["webshop", "frontend", "backend"],
+    "createdAt": "2026-05-07"
   }
 ]
