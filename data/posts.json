@@ -118,5 +118,37 @@
     "content": "Recently I spent a lot of time working on the product detail page and especially the product variant selection logic. Matching the correct variants and options turned out to be more difficult than expected and led to several messy implementations before I found a cleaner solution.\n\nToday I finally completed the variant selection system. Along the way we also had to redesign part of the shopping cart structure so it could properly support product variants. It was a challenging feature, but seeing it finally work correctly was very rewarding.",
     "tags": ["webshop", "frontend", "backend"],
     "createdAt": "2026-05-07"
+  },
+   {
+    "id": 16,
+    "title": "Company workshop and team event",
+    "excerpt": "Learning more about internal procedures followed by a creative company activity.",
+    "content": "Today we had the second part of the meeting that started on 24/04. This time we went deeper into company guidelines and internal procedures, including topics such as assigning responsibilities, handling incidents, and general workflows within the organization.\n\nAt the end of the day we had a company event at Splatter Studio, where we created paintings in groups using different paint splattering techniques. The results were questionable, but it was a fun experience and a good opportunity to interact with colleagues outside of normal work.\n\nAfterwards we all went out for dinner together. Events like these make the workplace feel much more social and enjoyable, and I hope to experience more of them in the future.",
+    "tags": ["company", "teamwork", "internship"],
+    "createdAt": "2026-05-11"
+  },
+  {
+    "id": 17,
+    "title": "Integrating the Mollie API",
+    "excerpt": "Starting payment integration for the webshop.",
+    "content": "Today I started integrating the Mollie payment API into the webshop. Initially the task felt intimidating because payment systems seem complex and critical.\n\nFortunately, the documentation was very clear and well-structured, which made the implementation process much smoother than expected. After understanding the flow and required endpoints, I managed to complete the integration relatively quickly.",
+    "tags": ["api", "payments", "mollie"],
+    "createdAt": "2026-05-12"
+  },
+  {
+    "id": 18,
+    "title": "Working with a temporary mentor",
+    "excerpt": "Adjusting to a temporary change in guidance during the internship.",
+    "content": "Today we started working with a temporary mentor because our usual mentor went on vacation. Despite the change, the workflow and communication within the team remained mostly the same.\n\nIt was interesting to see how smoothly the team adapted and continued working without major disruptions.",
+    "tags": ["internship", "teamwork"],
+    "createdAt": "2026-05-18"
+  },
+  {
+    "id": 19,
+    "title": "Project presentations and database improvements",
+    "excerpt": "Watching final internship presentations and resolving migration issues.",
+    "content": "Today two students who were also doing their internship at the company presented their final project and gave a demo of the application they built. Their project turned out very well and it was interesting to see how different teams approached their internship work.\n\nOn my side, I once again encountered issues related to database migrations. However, I finally managed to solve the recurring problem where I constantly had to drop and rebuild the database entirely. Fixing this issue should make development much smoother going forward.",
+    "tags": ["database", "migrations", "internship"],
+    "createdAt": "2026-05-22"
   }
 ]

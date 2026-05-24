@@ -1,3 +1,13 @@
+document.addEventListener("DOMContentLoaded", () => {
+  if (document.getElementById("postsGrid")) {
+    renderPosts("postsGrid", 3);
+  }
+
+  if (document.getElementById("postsList")) {
+    renderPosts("postsList");
+  }
+});
+
 async function renderPosts(containerId, limit = null) {
   const res = await fetch("/data/posts.json");
   const posts = await res.json();
@@ -58,16 +68,6 @@ async function renderPosts(containerId, limit = null) {
   ScrollToPost();
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  if (document.getElementById("postsGrid")) {
-    renderPosts("postsGrid", 3);
-  }
-
-  if (document.getElementById("postsList")) {
-    renderPosts("postsList");
-  }
-});
-
 function toggleCard(card) {
   if (!card) return;
 
@@ -87,7 +87,6 @@ function ScrollToPost() {
   if (!id) return
 
   const card = document.getElementById(`post-${id}`);
-  console.log(card)
   if (!card) return;
 
   toggleCard(card);
