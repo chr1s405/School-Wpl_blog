@@ -25,7 +25,6 @@ async function renderPosts(containerId, filters = null) {
   const container = document.getElementById(containerId);
   const template = document.getElementById("post-template");
   container.replaceChildren();
-  // container.appendChild(template);
 
   data.forEach(post => {
     const clone = template.content.cloneNode(true);
@@ -105,24 +104,24 @@ function ScrollToPost() {
 function initPostsFilters(containerId) {
   let tags = null;
   let sort = null;
-  let sortDir = false;
   let limit = null;
 
   const applyFilters = () => {
-    renderPosts(containerId, { limit, sort, sortDir, tags });
+    renderPosts(containerId, { limit, sort, tags });
   }
 
   document.querySelectorAll(".filter-group")
     .forEach(filter => {
-      const input = filter.querySelector("input");
-      if (input)
-        filter.addEventListener("click", () => input.focus())
+      const element = filter.querySelector(".filter");
+      if (element)
+        filter.addEventListener("click", () => element.focus());
     })
+
 
   const tagInput = document.getElementById("posts-filter-tag");
   if (tagInput) {
-    const autocomplete = document.querySelector(".autocomplete");
-    const autocompleteMenu = tagInput.parentElement.querySelector(".autocomplete-menu");
+    const autocomplete = tagInput.parentElement;
+    const autocompleteMenu = autocomplete.querySelector(".autocomplete-menu");
 
     document.addEventListener("click", (e) => {
       const isClicked = autocomplete.contains(e.target);
@@ -182,16 +181,16 @@ function initPostsFilters(containerId) {
       
       autocompleteMenu.replaceChildren(...items);
     };
-    
+
     const createAutoCompleteitem = (value, input) => {
       const item = document.createElement("button");
       item.textContent = value;
       item.classList.add("autocomplete-item");
       item.addEventListener("click", () => {
+        input.value = value;
         setTags(value);
         applyFilters();
         closeAutocomplete();
-        input.value = value;
       })
       return item;
     };
@@ -200,11 +199,41 @@ function initPostsFilters(containerId) {
 
   const sortInput = document.getElementById("posts-filter-sort");
   if (sortInput) {
-    sortInput.addEventListener("input", (e) => {
-      sort = e.target.value;
-      sortDir = false;
-      renderPosts(containerId, { limit, sort, sortDir, tags })
+    const dropdown = sortInput.parentElement;
+    const dropdownMenu = dropdown.querySelector(".dropdown-menu");
+    
+    document.addEventListener("click", (e) => {
+      const isClicked = dropdown.contains(e.target)
+      if(!isClicked){
+        closeDropdown();
+      }
     })
+
+    dropdown.addEventListener("click", () => {
+      dropdown.classList.toggle("open");
+    })
+
+    const dropdownItems = [...dropdownMenu.children]
+    dropdownItems.forEach(element => {
+      element.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const value = element.dataset.value
+        sortInput.value = element.dataset.label;
+        setSort(value);
+        dropdownItems.forEach(item => item.classList.remove("active"));
+        element.classList.add("active");
+        closeDropdown();
+      })
+    });
+    // helper functions
+    const setSort = (value) => {
+      sort = value;
+      applyFilters();
+    }
+
+    const closeDropdown = () => {
+        dropdown.classList.remove("open");
+    }
   }
 
   const sortDirBtn = document.getElementById("posts-filter-sortDir");
@@ -228,15 +257,11 @@ function filterPosts(posts, filters) {
   filtered = filtered.sort(
     (a, b) => {
       switch (filters?.sort) {
-        case "title": return a.title.localeCompare(b.title);
+        case "oldest": return new Date(a.createdAt) - new Date(b.createdAt);
         default: return new Date(b.createdAt) - new Date(a.createdAt);
       }
     }
   );
-
-  if (filters?.sortDir) {
-    filtered = filtered.reverse();
-  }
 
   if (filters?.limit) {
     filtered = filtered.slice(0, filters.limit);
