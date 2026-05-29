@@ -247,6 +247,132 @@ section {
   margin-top: 40px;
 }
 
+.posts-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+  flex-wrap: wrap;
+
+  font-size: 2.2rem;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+.posts-header h1{
+  margin: 0px;
+}
+
+.posts-filters {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.filter-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: white;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 10px;
+  padding: 8px 10px;
+  transition: border-color 0.2s ease;
+}
+
+.filter-group:focus-within {
+  border-color: var(--color-accent);
+}
+
+.filter-group input,
+.filter-group select {
+  border: none;
+  outline: none;
+  font-size: 0.95rem;
+  background: transparent;
+}
+
+.filter-group.search {
+  min-width: 220px;
+}
+
+.filter-group .icon {
+  margin-right: 6px;
+  opacity: 0.6;
+}
+
+.filter-group .icon > *{
+  display: flex;
+  height: 100%;
+  width: 100%;
+  aspect-ratio: 1;
+}
+
+.autocomplete {
+  position: relative;
+  min-width: 240px;
+}
+
+.autocomplete-menu {
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+}
+
+.autocomplete.open .autocomplete-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 100%;
+  padding: 6px;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  z-index: 50;
+  pointer-events: initial;
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease;
+}
+
+/* .autocomplete-menu.hidden {
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+} */
+
+.autocomplete-item {
+  text-align: left;
+  font-size: 0.95rem;
+  color: var(--color-text);
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.autocomplete-item:hover,
+.autocomplete-item.active {
+  background: var(--color-bg);
+  color: var(--color-accent);
+}
+
+.autocomplete-item:focus {
+  outline: 1px solid var(--color-accent);
+}
+
 .posts-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
