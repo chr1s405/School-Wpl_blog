@@ -415,6 +415,7 @@ section {
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   scroll-margin-top: 100px;
+  scroll-margin-bottom: 20px;
 }
 
 .post-card:hover {
@@ -482,8 +483,8 @@ section {
   max-height: 0px;
   opacity: 0;
   transition: 
-  max-height 250ms ease,
-  opacity 0.3s ease;
+    max-height 250ms ease,
+    opacity 0.3s ease;
   
 }
 
@@ -496,6 +497,10 @@ section {
   max-height: 1000px;
   opacity: 1;
   overflow-y: scroll;
+}
+
+.post-card.no-transition .content{
+  transition: none !important;
 }
 
 .content::-webkit-scrollbar {

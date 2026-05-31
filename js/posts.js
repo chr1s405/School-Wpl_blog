@@ -11,7 +11,14 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   if (document.getElementById("postsList")) {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("post");
+    history.replaceState(null, "", window.location.pathname);
+
     renderPosts("postsList");
+
+    if (id)
+      toggleCard(id);
 
     if (document.querySelector(".posts-filters")) {
       initPostsFilters("postsList");
@@ -25,6 +32,27 @@ async function renderPosts(containerId, filters = null) {
   const container = document.getElementById(containerId);
   const template = document.getElementById("post-template");
   container.replaceChildren();
+
+  if (data.length === 0) {
+    const emptyResult = document.createElement("div");
+    emptyResult.classList.add("post-card", "empty-state");
+
+    const title = document.createElement("h2");
+    title.textContent = filters?.tags
+      ? `No tags match '${filters.tags}'`
+      : "No posts found";
+
+    emptyResult.appendChild(title);
+
+
+    const message = document.createElement("p");
+    message.classList.add("excerpt")
+    message.textContent = "Try searching for another tag";
+    emptyResult.appendChild(message);
+
+    container.appendChild(emptyResult);
+    return;
+  }
 
   data.forEach(post => {
     const clone = template.content.cloneNode(true);
@@ -58,7 +86,7 @@ async function renderPosts(containerId, filters = null) {
     const btn = clone.querySelector(".toggle-btn");
     if (btn) {
       btn.addEventListener("click", () => {
-        toggleCard(card)
+        toggleCard(post.id);
       });
     }
 
@@ -69,32 +97,67 @@ async function renderPosts(containerId, filters = null) {
 
     container.appendChild(clone);
   });
-
-  ScrollToPost();
 }
 
-function toggleCard(card) {
+async function toggleCard(id) {
+  const card = document.getElementById(`post-${id}`);
   if (!card) return;
 
   const btn = card.querySelector(".toggle-btn");
   if (!btn) return;
 
-  card.classList.toggle("open");
+  const openCards = [...document.querySelectorAll(".post-card.open")]
+    .filter(post => post !== card);
 
-  btn.textContent = card.classList.contains("open")
-    ? "Show less"
-    : "Read more";
+  openCards.forEach((post) => {
+    post.classList.add("no-transition");
+    post.classList.remove("open");
+    post.offsetHeight;
+    post.querySelector(".toggle-btn").textContent = "Read more";
+  })
+  await Promise.all(openCards.map((post) => waitForTransition(post)));
+
+  const isOpening = !card.classList.contains("open");
+
+  if (card.classList.contains("open")) {
+    card.classList.remove("open");
+    btn.textContent = "Read more"
+  }
+  else {
+    const contentHeight = card.querySelector(".content").scrollHeight;
+    card.parentElement.style.minHeight = `${card.parentElement.scrollHeight + contentHeight}px`;
+
+    card.classList.add("open");
+    btn.textContent = "Show less"
+  }
+
+  ScrollToPost(id);
+
+  await waitForTransition(card);
+  card.parentElement.style.minHeight = "";
+
+  function waitForTransition(el) {
+    if (el.classList.contains("no-transition")) {
+      el.classList.remove("no-transition");
+      return Promise.resolve();
+    }
+
+    return new Promise(resolve => {
+      const handler = (e) => {
+        if (e.propertyName !== "max-height") return;
+        el.removeEventListener("transitionend", handler);
+        resolve();
+      };
+
+      el.addEventListener("transitionend", handler);
+    });
+  }
 }
 
-function ScrollToPost() {
-  const params = new URLSearchParams(window.location.search);
-  const id = params.get("post");
-  if (!id) return
-
+function ScrollToPost(id) {
   const card = document.getElementById(`post-${id}`);
   if (!card) return;
 
-  toggleCard(card);
   card.scrollIntoView({
     behavior: "smooth",
     block: "start",
@@ -131,7 +194,7 @@ function initPostsFilters(containerId) {
     })
     tagInput.addEventListener("focus", () => {
       const inputValue = tagInput.value.trim().toLowerCase()
-      if(inputValue && !allTags.some(tag => tag === inputValue)){
+      if (inputValue && !allTags.some(tag => tag === inputValue)) {
         createAutocompleteMenu(inputValue, tagInput);
         autocomplete.classList.add("open");
       }
@@ -151,7 +214,7 @@ function initPostsFilters(containerId) {
       timer = setTimeout(() => {
         setTags(value);
       }, 300);
-      
+
       createAutocompleteMenu(value, tagInput);
 
       if (autocompleteMenu.children.length === 0) {
@@ -178,7 +241,7 @@ function initPostsFilters(containerId) {
         .filter(tag => tag.toLowerCase().includes(value))
         .slice(0, 5)
         .map(tag => createAutoCompleteitem(tag, input));
-      
+
       autocompleteMenu.replaceChildren(...items);
     };
 
@@ -201,10 +264,10 @@ function initPostsFilters(containerId) {
   if (sortInput) {
     const dropdown = sortInput.parentElement;
     const dropdownMenu = dropdown.querySelector(".dropdown-menu");
-    
+
     document.addEventListener("click", (e) => {
       const isClicked = dropdown.contains(e.target)
-      if(!isClicked){
+      if (!isClicked) {
         closeDropdown();
       }
     })
@@ -232,7 +295,7 @@ function initPostsFilters(containerId) {
     }
 
     const closeDropdown = () => {
-        dropdown.classList.remove("open");
+      dropdown.classList.remove("open");
     }
   }
 
