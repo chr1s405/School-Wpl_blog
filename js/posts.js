@@ -164,150 +164,6 @@ function ScrollToPost(id) {
   })
 }
 
-function initPostsFilters(containerId) {
-  let tags = null;
-  let sort = null;
-  let limit = null;
-
-  const applyFilters = () => {
-    renderPosts(containerId, { limit, sort, tags });
-  }
-
-  document.querySelectorAll(".filter-group")
-    .forEach(filter => {
-      const element = filter.querySelector(".filter");
-      if (element)
-        filter.addEventListener("click", () => element.focus());
-    })
-
-
-  const tagInput = document.getElementById("posts-filter-tag");
-  if (tagInput) {
-    const autocomplete = tagInput.parentElement;
-    const autocompleteMenu = autocomplete.querySelector(".autocomplete-menu");
-
-    document.addEventListener("click", (e) => {
-      const isClicked = autocomplete.contains(e.target);
-      if (!isClicked) {
-        closeAutocomplete();;
-      }
-    })
-    tagInput.addEventListener("focus", () => {
-      const inputValue = tagInput.value.trim().toLowerCase()
-      if (inputValue && !allTags.some(tag => tag === inputValue)) {
-        createAutocompleteMenu(inputValue, tagInput);
-        autocomplete.classList.add("open");
-      }
-    })
-
-    let timer = null;
-    tagInput.addEventListener("input", (e) => {
-      const value = e.target.value.trim().toLowerCase();
-      if (!value) {
-        clearTimeout(timer);
-        setTags(null);
-        closeAutocomplete();
-        return;
-      }
-
-      if (timer) { clearTimeout(timer); }
-      timer = setTimeout(() => {
-        setTags(value);
-      }, 300);
-
-      createAutocompleteMenu(value, tagInput);
-
-      if (autocompleteMenu.children.length === 0) {
-        closeAutocomplete();
-      }
-      else {
-        autocomplete.classList.add("open");
-      }
-
-    });
-    // helper functions  
-    const setTags = (value) => {
-      tags = value;
-      applyFilters();
-    };
-
-    const closeAutocomplete = () => {
-      autocomplete.classList.remove("open");
-      autocompleteMenu.replaceChildren();
-    };
-
-    const createAutocompleteMenu = (value, input) => {
-      const items = allTags
-        .filter(tag => tag.toLowerCase().includes(value))
-        .slice(0, 5)
-        .map(tag => createAutoCompleteitem(tag, input));
-
-      autocompleteMenu.replaceChildren(...items);
-    };
-
-    const createAutoCompleteitem = (value, input) => {
-      const item = document.createElement("button");
-      item.textContent = value;
-      item.classList.add("autocomplete-item");
-      item.addEventListener("click", () => {
-        input.value = value;
-        setTags(value);
-        applyFilters();
-        closeAutocomplete();
-      })
-      return item;
-    };
-
-  }
-
-  const sortInput = document.getElementById("posts-filter-sort");
-  if (sortInput) {
-    const dropdown = sortInput.parentElement;
-    const dropdownMenu = dropdown.querySelector(".dropdown-menu");
-
-    document.addEventListener("click", (e) => {
-      const isClicked = dropdown.contains(e.target)
-      if (!isClicked) {
-        closeDropdown();
-      }
-    })
-
-    dropdown.addEventListener("click", () => {
-      dropdown.classList.toggle("open");
-    })
-
-    const dropdownItems = [...dropdownMenu.children]
-    dropdownItems.forEach(element => {
-      element.addEventListener("click", (e) => {
-        e.stopPropagation();
-        const value = element.dataset.value
-        sortInput.value = element.dataset.label;
-        setSort(value);
-        dropdownItems.forEach(item => item.classList.remove("active"));
-        element.classList.add("active");
-        closeDropdown();
-      })
-    });
-    // helper functions
-    const setSort = (value) => {
-      sort = value;
-      applyFilters();
-    }
-
-    const closeDropdown = () => {
-      dropdown.classList.remove("open");
-    }
-  }
-
-  const sortDirBtn = document.getElementById("posts-filter-sortDir");
-  if (sortDirBtn) {
-    sortDirBtn.addEventListener("click", (e) => {
-      sortDir = !sortDir;
-      renderPosts(containerId, { limit, sort, sortDir, tags })
-    })
-  }
-}
-
 function filterPosts(posts, filters) {
   let filtered = posts;
 
@@ -331,4 +187,136 @@ function filterPosts(posts, filters) {
   }
 
   return filtered;
+}
+
+function initPostsFilters(containerId) {
+  let tags = null;
+  const setTags = (value) => { tags = value; applyFilters() };
+  let sort = null;
+  const setSort = (value) => { sort = value; applyFilters() };
+  let limit = null;
+
+  const applyFilters = () => {
+    renderPosts(containerId, { limit, sort, tags });
+  }
+
+  document.querySelectorAll(".filter-group")
+    .forEach(filter => {
+      const element = filter.querySelector(".filter");
+      if (element)
+        filter.addEventListener("click", () => element.focus());
+    })
+
+  initTagFilter(setTags);
+
+  initSortFilter(setSort);
+}
+
+function initTagFilter(setTags) {
+  const tagInput = document.getElementById("posts-filter-tag");
+  if (!tagInput) return;
+  const autocomplete = tagInput.parentElement;
+  const autocompleteMenu = autocomplete.querySelector(".autocomplete-menu");
+
+  document.addEventListener("click", (e) => {
+    const isClicked = autocomplete.contains(e.target);
+    if (!isClicked) {
+      closeAutocomplete();;
+    }
+  })
+  tagInput.addEventListener("focus", () => {
+    const inputValue = tagInput.value.trim().toLowerCase()
+    if (inputValue && allTags.some(tag => tag.includes(inputValue) && tag !== inputValue)) {
+      createAutocompleteMenu(inputValue, tagInput);
+      autocomplete.classList.add("open");
+    }
+  })
+
+  let timer = null;
+  tagInput.addEventListener("input", (e) => {
+    const value = e.target.value.trim().toLowerCase();
+    if (!value) {
+      clearTimeout(timer);
+      setTags(null);
+      closeAutocomplete();
+      return;
+    }
+
+    if (timer) { clearTimeout(timer); }
+    timer = setTimeout(() => {
+      setTags(value);
+    }, 300);
+
+    createAutocompleteMenu(value, tagInput);
+
+    if (autocompleteMenu.children.length === 0) {
+      closeAutocomplete();
+    }
+    else {
+      autocomplete.classList.add("open");
+    }
+
+  });
+  // helper functions 
+  const closeAutocomplete = () => {
+    autocomplete.classList.remove("open");
+    autocompleteMenu.replaceChildren();
+  };
+
+  const createAutocompleteMenu = (value, input) => {
+    const items = allTags
+      .filter(tag => tag.toLowerCase().includes(value))
+      .slice(0, 5)
+      .map(tag => createAutoCompleteitem(tag, input));
+
+    autocompleteMenu.replaceChildren(...items);
+  };
+
+  const createAutoCompleteitem = (value, input) => {
+    const item = document.createElement("button");
+    item.textContent = value;
+    item.classList.add("autocomplete-item");
+    item.addEventListener("click", () => {
+      input.value = value;
+      setTags(value);
+      closeAutocomplete();
+    })
+    return item;
+  };
+}
+
+function initSortFilter(setSort) {
+  const sortInput = document.getElementById("posts-filter-sort");
+  if (!sortInput) return;
+
+  const dropdown = sortInput.parentElement;
+  const dropdownMenu = dropdown.querySelector(".dropdown-menu");
+
+  document.addEventListener("click", (e) => {
+    const isClicked = dropdown.contains(e.target)
+    if (!isClicked) {
+      closeDropdown();
+    }
+  })
+
+  dropdown.addEventListener("click", () => {
+    dropdown.classList.toggle("open");
+  })
+
+  const dropdownItems = [...dropdownMenu.children]
+  dropdownItems.forEach(element => {
+    element.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const value = element.dataset.value
+      sortInput.textContent = element.dataset.label;
+      setSort(value);
+      dropdownItems.forEach(item => item.classList.remove("active"));
+      element.classList.add("active");
+      closeDropdown();
+    })
+  });
+  // helper functions
+  const closeDropdown = () => {
+    dropdown.classList.remove("open");
+  }
 }

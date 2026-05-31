@@ -297,10 +297,12 @@ section {
 
 .filter-group.search {
   min-width: 220px;
+  cursor: text;
 }
 
 .filter-group.sort {
   min-width: initial;
+  cursor: pointer;
 }
 
 .filter-group .icon {
@@ -317,6 +319,10 @@ section {
 
 .filter-group.sort.open .icon{
   transform: rotateZ(-180deg);
+}
+
+.filter{
+  cursor: inherit;
 }
 
 .dropdown,
@@ -342,6 +348,7 @@ section {
   opacity: 0;
   transform: translateY(-6px);
   pointer-events: none;
+  cursor: initial;
 }
 
 .dropdown.open .dropdown-menu,
@@ -465,6 +472,7 @@ section {
   font-size: 1.1rem;
   margin-top: 0px;
   margin-bottom: 8px;
+  word-wrap: break-word;
 }
 
 .post-card p {
