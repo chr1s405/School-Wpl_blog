@@ -102,10 +102,7 @@ async function renderPosts(containerId, filters = null) {
 async function toggleCard(id) {
   const card = document.getElementById(`post-${id}`);
   if (!card) return;
-
-  const btn = card.querySelector(".toggle-btn");
-  if (!btn) return;
-
+  
   const openCards = [...document.querySelectorAll(".post-card.open")]
     .filter(post => post !== card);
 
@@ -113,7 +110,6 @@ async function toggleCard(id) {
     post.classList.add("no-transition");
     post.classList.remove("open");
     post.offsetHeight;
-    post.querySelector(".toggle-btn").textContent = "Read more";
   })
   await Promise.all(openCards.map((post) => waitForTransition(post)));
 
@@ -121,14 +117,12 @@ async function toggleCard(id) {
 
   if (card.classList.contains("open")) {
     card.classList.remove("open");
-    btn.textContent = "Read more"
   }
   else {
     const contentHeight = card.querySelector(".content").scrollHeight;
     card.parentElement.style.minHeight = `${card.parentElement.scrollHeight + contentHeight}px`;
 
     card.classList.add("open");
-    btn.textContent = "Show less"
   }
 
   ScrollToPost(id);

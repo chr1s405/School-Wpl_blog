@@ -544,6 +544,14 @@ section {
   text-align: right;
 }
 
+.toggle-btn::before {
+  content: "Read more";
+}
+
+.post-card.open .toggle-btn::before {
+  content: "Show less";
+}
+
 .toggle-btn:hover {
   opacity: 0.8;
 }
@@ -555,4 +563,21 @@ section {
 
 .tech-list li {
   margin-bottom: 6px;
+}
+
+@media print {
+
+  .content {
+    max-height: none !important;
+    overflow: visible !important;
+    opacity: 100% !important;
+  }
+
+  .post-card {
+    break-inside: avoid;
+  }
+
+  .toggle-btn::before{
+    content: "Show less" !important;
+  }
 }

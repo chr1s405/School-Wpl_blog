@@ -150,5 +150,13 @@
     "content": "Today two students who were also doing their internship at the company presented their final project and gave a demo of the application they built. Their project turned out very well and it was interesting to see how different teams approached their internship work.\n\nOn my side, I once again encountered issues related to database migrations. However, I finally managed to solve the recurring problem where I constantly had to drop and rebuild the database entirely. Fixing this issue should make development much smoother going forward.",
     "tags": ["database", "migrations", "internship"],
     "createdAt": "2026-05-22"
-  }
+  },
+  {
+  "id": 20,
+  "title": "Final day of the internship",
+  "excerpt": "Wrapping up the project, presenting our work, and reflecting on the internship experience.",
+  "content": "Today was the last day of my internship. During the past week we were very busy completing the remaining pull requests and making sure there were no major bugs left in the project. It was a hectic final stretch, but I am happy with how the webshop turned out in the end.\n\nWe also gave a presentation of our work to the company. While there were a few small issues during the demo, the presentation went well overall. We received useful feedback and suggestions from the audience, which was valuable and appreciated.\n\nLooking back, I am very glad that I had the opportunity to complete my internship at Numble. The atmosphere within the company was always enjoyable, colleagues were approachable and willing to help whenever needed, and we were able to finish the internship with a project that we can be proud of. It was a very positive learning experience and a great introduction to working in a professional development environment.",
+  "tags": ["internship", "presentation", "reflection"],
+  "createdAt": "2026-05-29"
+}
 ]
